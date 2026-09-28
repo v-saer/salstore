@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e8f5ff" />
+    <meta name="description" content="Find a Telegram profile and choose your Premium plan with SalStore." />
+    <title>SalStore — Telegram Premium, your way</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="SalStore home"><span class="brand-mark">s<span>.</span></span><span>salstore</span></a>
+      <nav class="topnav" aria-label="Main navigation">
+        <a href="#plans">Plans</a>
+        <a href="#lookup">Username lookup</a>
+      </nav>
+      <a class="support-link" href="#plans"><span class="status-dot"></span> ABA Pay checkout</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-star">✳</span> YOUR TELEGRAM, BUT EXTRA</div>
+          <h1>Premium looks<br />good on <span>you.</span></h1>
+          <p class="hero-lede">Pick your plan, check your username, and make your Telegram era a little more iconic.</p>
+          <div class="hero-stats"><span><b>01</b> Find your account</span><i></i><span><b>02</b> Pick your time</span></div>
+        </div>
+        <div class="premium-stage" aria-label="An animated three-dimensional Telegram Premium badge">
+          <canvas id="premium-canvas" aria-hidden="true"></canvas>
+          <div class="stage-note"><span class="stage-orbit"></span><span>telegram premium<br /><b>your next upgrade</b></span><span class="note-arrow">✦</span></div>
+          <div class="stage-index">SALSTORE&nbsp; / &nbsp;PREMIUM</div>
+        </div>
+        <div class="hero-sticker" aria-hidden="true"><span>GOOD<br />CHOICE</span><b>↘</b></div>
+      </section>
+
+      <section class="shop" id="plans">
+        <div class="section-heading">
+          <div><div class="eyebrow"><span class="eyebrow-star">✳</span> THE LINEUP</div><h2>Pick your <em>upgrade.</em></h2></div>
+          <p>One-time payment. Your plan, your pace.<br /><span>Prices shown in USD.</span></p>
+        </div>
+        <div class="shop-grid">
+          <div class="plans" role="radiogroup" aria-label="Choose a Telegram Premium plan">
+            <button class="plan-row" data-plan="3m" role="radio" aria-checked="false" type="button">
+              <span class="plan-radio"></span><span class="plan-length">03 <small>MONTHS</small></span><span class="plan-price"><b>$13.88</b><del>$14.44</del></span><span class="plan-save">SAVE 4%</span>
+            </button>
+            <button class="plan-row selected" data-plan="6m" role="radio" aria-checked="true" type="button">
+              <span class="plan-radio"></span><span class="plan-length">06 <small>MONTHS</small></span><span class="plan-price"><b>$17.77</b><del>$22.22</del></span><span class="plan-save">SAVE 20%</span>
+            </button>
+            <button class="plan-row" data-plan="12m" role="radio" aria-checked="false" type="button">
+              <span class="plan-radio"></span><span class="plan-length">12 <small>MONTHS</small></span><span class="plan-price"><b>$29.99</b><del>$48.88</del></span><span class="plan-save">SAVE 39%</span>
+            </button>
+            <div class="checkout-box">
+              <div class="checkout-top"><span class="checkout-lock">⌑</span><span>ABA PAY · SECURE LINK</span><span class="secure-word">ABA</span></div>
+              <div class="order-preview"><span>ORDERING FOR</span><strong id="order-username">Look up your Telegram username</strong></div>
+              <button class="checkout-button" id="checkout-button" type="button"><span>Pay with ABA</span><span class="button-arrow">↗</span></button>
+              <p class="checkout-hint" id="checkout-hint">Choose a plan and look up your username to continue.</p>
+              <div class="payment-followup" id="payment-followup" hidden>
+                <p id="payment-followup-copy">Finished paying in ABA? Tell SalStore to check the payment.</p>
+                <button class="claim-payment-button" id="claim-payment-button" type="button">I’ve paid</button>
+              </div>
+            </div>
+          </div>
+          <aside class="lookup-panel" id="lookup">
+            <div class="lookup-label"><span class="lookup-number">01</span><span>FIRST, FIND YOUR ACCOUNT</span></div>
+            <h3>Who’s getting<br />the glow-up?</h3>
+            <p>Look up the Telegram username you want to check.</p>
+            <form id="lookup-form" class="lookup-form">
+              <label for="username">TELEGRAM USERNAME</label>
+              <div class="username-field"><span>@</span><input id="username" name="username" type="text" autocomplete="off" autocapitalize="none" placeholder="yourusername" maxlength="33" /><button type="submit" aria-label="Look up username">↗</button></div>
+            </form>
+            <div class="lookup-message" id="lookup-message" role="status" aria-live="polite">Your username is only used to check the public profile.</div>
+            <div class="profile-result" id="profile-result" hidden></div>
+            <div class="lookup-foot"><span class="privacy-icon">◉</span> We only check public profile details.</div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="fineprint" aria-label="Order information"><span><b>Payment note:</b> ABA links are hosted by ABA. SalStore cannot verify payment from these fixed links; Premium is not activated automatically.</span><a href="#plans">Review payment options ↗</a></section>
+    </main>
+    <footer><a class="brand footer-brand" href="/"><span class="brand-mark">s<span>.</span></span><span>salstore</span></a><span>KEEP IT PREMIUM. KEEP IT YOU.</span><span>© SALSTORE 2026</span></footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <dialog class="status-dialog" id="status-dialog">
+      <button class="dialog-close" id="dialog-close" aria-label="Close">×</button>
+      <div class="dialog-symbol" id="dialog-symbol">✳</div>
+      <p class="eyebrow" id="dialog-eyebrow">ORDER UPDATE</p>
+      <h2 id="dialog-title">Payment received.</h2>
+      <p class="dialog-body" id="dialog-body"></p>
+      <div class="dialog-details" id="dialog-details"></div>
+      <button class="dialog-action" id="dialog-action" type="button">Back to SalStore <span>↗</span></button>
+    </dialog>
+  </body>
+</html>
